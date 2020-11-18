@@ -3,19 +3,34 @@
 This is a startup project based on the ABP framework. For more information, visit <a href="https://abp.io/" target="_blank">abp.io</a>
 
 ## Run the app:
-Install  mongodb
-Change .\BookStore-Angular-MongoDb\aspnet-core\src\Acme.BookStore.HttpApi.Host\appsettings.json "ConnectionStrings.Default to have the correct value: e.g. mongodb://localhost:27017/BookStore
-install easy-rsa etc. as per: https://www.percona.com/blog/2019/10/28/setting-up-mongodb-with-member-x509-auth-and-ssl-easy-rsa/
-.. TODO provide instructions on connecting to mongodb using cert ".\aspnet-core\src\Acme.BookStore.HttpApi.Host\tempkey.rsa" and provide values for "aspnet-core\src\Acme.BookStore.DbMigrator\tempkey.rsa"
-Open console
-Run 'dotnet --list-sdks'
-Pick highest and update global.json or install the version mentioned in global.json
-Save global.json
-Open .\aspnet-core\Acme.BookStore.sln in VS
-Set Acme.BookStore.HttpApi.Host as the Startup Project
-From command prompt, run `yarn start` for a dev server.
-From Visual studio Debug/f5 app
-VS will open `http://localhost:4200/`. 
+  install  mongodb: get a new Atlas account and create a cloud based DB
+  Update the ConnectionStrings.Default value in :
+  change .\BookStore-Angular-MongoDb\aspnet-core\src\Acme.BookStore.HttpApi.Host\appsettings.json
+  and
+  change .\BookStore-Angular-MongoDb\aspnet-core\src\Acme.BookStore.DbMigrator\appsettings.json
+    update the connection string value to as indicated on https://cloud.mongodb.com/ Cluster | Connect | Application. Similar to:
+    "mongodb+srv://{username}:{password}@{hostcluster}.mongodb.net/BookStore?ssl=true&replicaSet={replicaset}&authSource=admin&retryWrites=true&w=majority"
+    and note never to check in the code to github with your password
+  OR
+    install mongodb locally
+    and connect using local certs or local username/password
+    install easy-rsa etc. as per: https://www.percona.com/blog/2019/10/28/setting-up-mongodb-with-member-x509-auth-and-ssl-easy-rsa/
+  Open ..\..\global.json
+  Open console
+  Run 'dotnet --list-sdks'
+  Pick highest and update global.json or install the version mentioned in global.json
+  Open ..\aspnet-core\Acme.BookStore.sln in VS
+  Set Acme.BookStore.HttpApi.Host as the Startup Project
+  To initialise your database:
+   cd .\BookStore-Angular-MongoDb\aspnet-core\src\Acme.BookStore.DbMigrator\
+   dotnet run Acme.BookStore.DbMigrator.csproj
+  open .\BookStore-Angular-MongoDb\aspnet-core\src\Acme.BookStore.Domain\Data\BookStoreDbMigrationService.cs
+  Comment out line 40 //await MigrateDatabaseSchemaAsync();, as there is a mongo error "pending collection catalog changes" 
+  To seed the data run:
+   dotnet run Acme.BookStore.DbMigrator.csproj
+  From command promtp, run `yarn start` for a dev server.
+  From Visual studio Debug/f5 app
+  VS will open `http://localhost:4200/`. 
 
 ## Development server
 
