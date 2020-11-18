@@ -34,7 +34,7 @@ namespace Acme.BookStore.MongoDB
 
             Configure<AbpUnitOfWorkDefaultOptions>(options =>
             {
-                options.TransactionBehavior = UnitOfWorkTransactionBehavior.Disabled;
+                options.TransactionBehavior = UnitOfWorkTransactionBehavior.Auto;
             });
         }
     }
