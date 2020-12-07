@@ -26,7 +26,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
  - Open ..\..\global.json
  - Open console
  - Run 'dotnet --list-sdks'
- - Pick highest and update global.json or install the version mentioned in global.json
+ - If 5.0.100 is not installed: Pick highest (greater than 5.0.100) and update global.json or install the version mentioned in global.json
  - Open ..\aspnet-core\Acme.BookStore.sln in VS
  - Set Acme.BookStore.HttpApi.Host as the Startup Project
  - To initialise your database:
