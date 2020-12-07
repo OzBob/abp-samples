@@ -34,9 +34,24 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
   Comment out line 40 //await MigrateDatabaseSchemaAsync();, as there is a mongo error "pending collection catalog changes" 
   To seed the data run:
    dotnet run Acme.BookStore.DbMigrator.csproj
-  From command promtp, run `yarn start` for a dev server.
-  From Visual studio Debug/f5 app
-  VS will open `http://localhost:4200/`. 
+
+  From Visual studio
+   Open Developer Command prompt
+   Run:
+   Yarn
+   Gulp
+   Close the developer command prompt
+   Debug (press f5)
+   VS will open `http://localhost:44308`. 
+
+  From commandline
+  open:
+  $\abp-samples\BookStore-Angular-MongoDb\angular
+  run 
+  `yarn build`
+  `yarn start`
+  Open a browser to: `http://localhost:4200/`
+  Login with admin/1q2w3E*
 
 ## Code scaffolding
 
